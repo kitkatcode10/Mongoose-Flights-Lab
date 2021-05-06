@@ -20,7 +20,7 @@ function index(req, res) {
         if (err) {
             return console.log(err);
         }
-    res.render('flights/index', { title: 'List of All Flights', flight });
+    res.render('flights/index', { title: 'List of All Flights', flights });
 });
 
 }

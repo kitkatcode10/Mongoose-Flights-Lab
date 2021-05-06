@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 const destinationSchema = new Schema({
   airport: String, 
   arrival: Date, 
+  
 }, {
   timestamps: true
 }); 
-
 
 const flightSchema = new Schema({
   airline: String,

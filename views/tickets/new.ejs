@@ -3,12 +3,14 @@
 
 <h2>Create a New Ticket</h2>
 <form action="/flights/<%= flight._id %>/tickets" method="POST">
-  <label>Seat
+  <label>Seat:
   <input type="text" required pattern="[A-F][1-9]\d?" name="seat">
   </label><br>
-  <label> Price 
+  <br>
+  <label> Price: 
   <input type="number" name="price">
   </label><br>
+  <br>
   <input type="submit" value="Add Ticket">
 </form>
 
