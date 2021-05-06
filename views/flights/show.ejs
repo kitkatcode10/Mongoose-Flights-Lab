@@ -1,0 +1,93 @@
+<%- include('../partials/header') %>
+
+
+<section id="show-page">
+  <form action="/flights" method="POST"> 
+  <h1> Flight Details </h1>
+  <div><strong> Flight No: </strong></div>
+  <div><%= flight.flightNo %></div>
+  <br>
+  <div><strong> Departs: </strong></div>
+  <div><%= flight.departs %></div>
+  <br>
+  <div><strong> Airline: </strong></div>
+  <div><%= flight.airline %></div>
+  <br>
+  <div><strong> Departing Airport: </strong></div>
+  <div><%= flight.airport %></div>
+</section> 
+</form>
+
+
+
+<br><h2> Add a Destination </h2>
+  <form id ="add-destination-form" method="POST"
+    action="/flights/<%= flight.id %>/destinations">
+    
+    <label><strong> Destination-Airport: </strong></label>
+    <select name="airport"> 
+          <option value="AUS">AUS</option>
+          <option value="DFW">DFW</option>
+          <option value="DEN">DEN</option>
+          <option value="LAX">LAX</option>
+          <option value="SAN">SAN</option>
+    </select>
+    <br>
+    <label><strong> Arrival Date & Time </strong></label>
+    <input type="datetime-local" name="arrival">
+    <br>
+    <input type="submit" value="Add Destination">
+  </form>
+  <br>
+  <br>
+
+<% if (flight.destinations.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th> Destination </th>
+        <th> Arrival Details </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flight.destinations.forEach(function(d) { %> 
+      <tr>
+        <td><%= d.airport %></td>
+        <td><%= d.arrival %></td>
+      </tr>
+    <% }); %>
+    </tbody>
+    </table>
+  <% } else { %>
+  <h5> DIRECT FLIGHT OR / NO ADDITIONAL DESTINATIONS YET </h5>
+<% } %> 
+
+<br><h2> Tickets </h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Seat</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+</table>
+<tbody>
+  <% tickets.forEach(function(t) { %>
+  <tr>
+    <td><%= t.seat %></td>
+    <td><%= t.price %></td>
+  </tr>
+</tbody>
+<% }); %>
+
+<form id="add-ticket-btn" method="GET"
+action="/flights/<%= flight._id %>/tickets">
+<button class="input-button"> Add New Ticket </button>
+
+</form>
+
+
+
+<%- include('../partials/footer') %>
+
